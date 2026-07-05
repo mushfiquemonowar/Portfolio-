@@ -1,0 +1,931 @@
+/* ===================================
+   MUSHFIUE MONOWAR PORTFOLIO
+   Part 1
+=================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:#0a0a0a;
+    color:#fff;
+    overflow-x:hidden;
+
+}
+
+/* Variables */
+
+:root{
+
+    --yellow:#FFD54A;
+    --black:#0a0a0a;
+    --card:#171717;
+    --border:#2b2b2b;
+    --gray:#b8b8b8;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--yellow);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0a0a0a;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+    color:white;
+}
+
+img{
+    display:block;
+    width:100%;
+}
+
+/* ===========================
+HEADER
+=========================== */
+
+header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:22px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(10,10,10,.75);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #1d1d1d;
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+}
+
+.logo span{
+
+    color:var(--yellow);
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:center;
+
+}
+
+nav a{
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--yellow);
+
+}
+
+/* Buttons */
+
+.btn{
+
+    padding:13px 28px;
+
+    background:var(--yellow);
+
+    color:#111;
+
+    border-radius:40px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(255,213,74,.35);
+
+}
+
+.btn-outline{
+
+    padding:13px 28px;
+
+    border:2px solid var(--yellow);
+
+    border-radius:40px;
+
+    color:white;
+
+    transition:.35s;
+
+}
+
+.btn-outline:hover{
+
+    background:var(--yellow);
+
+    color:black;
+
+}
+
+/* ===========================
+BANNER
+=========================== */
+
+.hero{
+
+    padding:110px 8% 70px;
+
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    
+    aspect-ratio: 16 / 9;
+    
+    min-height: 100px;
+    max-height: 950px;
+    
+    overflow: hidden;
+    border-radius: 28px;
+    
+    background: #111;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover;
+    
+    object-position: center center;
+    
+    display: block;
+}
+
+/* Mobile */
+
+@media (max-width:768px) {
+    
+    .banner {
+        
+        aspect-ratio: 9 / 16;
+        
+        min-height: 450px;
+        
+        max-height: 700px;
+        
+    }
+    
+    .banner img {
+        
+        object-position: center top;
+        
+    }
+    
+}
+
+.banner:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.banner-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:70px;
+
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.15)
+    );
+
+}
+
+.hero-tag{
+
+    color:var(--yellow);
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.big-name{
+
+    font-size:clamp(32px, 6vw, 72px);
+
+    line-height:1;
+
+    font-weight:800;
+
+}
+
+.big-name span{
+
+    display:block;
+
+    color:var(--yellow);
+
+}
+
+.profession{
+
+    margin-top:18px;
+
+    font-size:clamp(18px, 3vw, 28px);
+
+    font-weight:500;
+
+}
+
+.description{
+
+    margin-top:25px;
+
+    max-width:560px;
+
+    color:var(--gray);
+
+    line-height:1.9;
+
+    margin-bottom:35px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+/* ===================================
+   ABOUT SECTION
+=================================== */
+
+.about{
+
+    padding:80px 8%;
+
+}
+
+.section-title{
+
+    color:var(--yellow);
+
+    font-size:14px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.about-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:45px;
+
+    transition:.35s;
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--yellow);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+.about-card h2{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.about-card p{
+
+    line-height:2;
+
+    color:var(--gray);
+
+}
+
+/* ===================================
+   SKILLS
+=================================== */
+
+.skills{
+
+    padding:80px 8%;
+
+}
+
+.skill-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+.skill-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    transition:.35s;
+
+}
+
+.skill-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--yellow);
+
+}
+
+.skill-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:10px;
+
+    background:#252525;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.fill{
+
+    height:100%;
+
+    background:var(--yellow);
+
+    border-radius:30px;
+
+}
+
+.html{width:90%;}
+.css{width:88%;}
+.js{width:70%;}
+.cad{width:82%;}
+.office{width:90%;}
+.problem{width:86%;}
+
+/* ===================================
+   CONTACT
+=================================== */
+
+.contact{
+
+    padding:80px 8%;
+
+}
+
+.contact-box{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.contact-item{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    transition:.35s;
+
+}
+
+.contact-item:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--yellow);
+
+}
+
+.contact-item h3{
+
+    color:var(--yellow);
+
+    margin-bottom:15px;
+
+}
+
+.contact-item p{
+
+    color:var(--gray);
+
+    word-break:break-word;
+
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer{
+
+    padding:40px 8%;
+
+    text-align:center;
+
+    border-top:1px solid var(--border);
+
+    margin-top:50px;
+
+}
+
+footer p{
+
+    color:#888;
+
+    margin:6px 0;
+
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:900px){
+
+.banner{
+
+height:420px;
+
+}
+
+.banner-overlay{
+
+padding:40px;
+
+}
+
+.big-name{
+
+font-size:50px;
+
+}
+
+.profession{
+
+font-size:22px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+
+padding:18px 6%;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.hero,
+.about,
+.skills,
+.contact{
+
+padding-left:6%;
+padding-right:6%;
+
+}
+
+.banner{
+
+height:360px;
+
+}
+
+.banner-overlay{
+
+padding:28px;
+
+}
+
+.big-name{
+
+font-size:38px;
+
+}
+
+.profession{
+
+font-size:18px;
+
+}
+
+.description{
+
+font-size:clamp(14px, 2.5vw, 16px);
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-buttons a{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.about-card{
+
+padding:30px;
+
+}
+
+.about-card h2{
+
+font-size:26px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.logo{
+
+font-size:22px;
+
+}
+
+.banner{
+
+height:320px;
+
+}
+
+.hero-tag{
+
+font-size:12px;
+
+}
+
+.big-name{
+
+font-size:32px;
+
+}
+
+.description{
+
+line-height:1.7;
+
+}
+
+}
+
+
+/* ===================================
+   PART 3 - PREMIUM EFFECTS
+=================================== */
+
+/* Glass Effect */
+
+.about-card,
+.skill-card,
+.contact-item {
+    
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+}
+
+/* Yellow Glow */
+
+.banner::after {
+    
+    content: "";
+    
+    position: absolute;
+    
+    width: 350px;
+    height: 350px;
+    
+    right: -120px;
+    top: -120px;
+    
+    background: rgba(255, 213, 74, .18);
+    
+    filter: blur(120px);
+    
+    border-radius: 50%;
+    
+    pointer-events: none;
+    
+}
+
+.banner::before {
+    
+    content: "";
+    
+    position: absolute;
+    
+    width: 220px;
+    height: 220px;
+    
+    left: -60px;
+    bottom: -60px;
+    
+    background: rgba(255, 213, 74, .08);
+    
+    filter: blur(90px);
+    
+    border-radius: 50%;
+    
+    pointer-events: none;
+    
+}
+
+/* Card Hover */
+
+.about-card,
+.skill-card,
+.contact-item {
+    
+    transition:
+        transform .35s,
+        box-shadow .35s,
+        border-color .35s;
+    
+}
+
+.about-card:hover,
+.skill-card:hover,
+.contact-item:hover {
+    
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .35),
+        0 0 25px rgba(255, 213, 74, .08);
+    
+}
+
+/* Image Zoom */
+
+.banner {
+    
+    overflow: hidden;
+    
+}
+
+.banner img {
+    
+    transition: transform .8s ease;
+    
+}
+
+.banner:hover img {
+    
+    transform: scale(1.08);
+    
+}
+
+/* Buttons */
+
+.btn,
+.btn-outline {
+    
+    transition: .35s ease;
+    
+}
+
+.btn:hover {
+    
+    transform: translateY(-5px);
+    
+}
+
+.btn-outline:hover {
+    
+    transform: translateY(-5px);
+    
+}
+
+/* Headings */
+
+.big-name {
+    
+    letter-spacing: 2px;
+    
+    text-transform: uppercase;
+    
+}
+
+.section-title {
+    
+    position: relative;
+    
+    display: inline-block;
+    
+}
+
+.section-title::after {
+    
+    content: "";
+    
+    width: 70px;
+    
+    height: 3px;
+    
+    background: var(--yellow);
+    
+    position: absolute;
+    
+    left: 0;
+    bottom: -8px;
+    
+}
+
+/* Scroll Reveal */
+
+.hidden {
+    
+    opacity: 0;
+    
+    transform: translateY(50px);
+    
+    transition: all .8s ease;
+    
+}
+
+.show {
+    
+    opacity: 1;
+    
+    transform: translateY(0);
+    
+}
+
+/* Active Navbar */
+
+nav a.active {
+    
+    color: var(--yellow);
+    
+}
+
+/* Selection */
+
+::selection {
+    
+    background: var(--yellow);
+    
+    color: #000;
+    
+}
+
+/* Smooth Transition */
+
+html {
+    
+    scroll-behavior: smooth;
+    
+}
+
+/* Footer */
+
+footer strong {
+    
+    color: var(--yellow);
+    
+}
+
+
