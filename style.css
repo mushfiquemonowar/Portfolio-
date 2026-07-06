@@ -778,3 +778,54 @@ transform: translateY(-2px) scale(1.02);
     .btn-secondary { margin-left: 0; }
     .profile-container { width: 260px; height: 260px; }
 }
+/* Mobile Contact Bar */
+
+.mobile-contact-bar{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    /* Hide old cards */
+    .contact-grid{
+        display:none;
+    }
+
+    .mobile-contact-bar{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:18px;
+        flex-wrap:wrap;
+        margin-top:10px;
+        padding:20px 0;
+    }
+
+    .contact-circle{
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-decoration:none;
+
+        background:rgba(255,255,255,.04);
+        border:1px solid rgba(255,255,255,.08);
+
+        color:var(--accent-color);
+        font-size:22px;
+
+        transition:all .35s var(--transition-smooth);
+    }
+
+    .contact-circle:hover,
+    .contact-circle:active{
+        transform:translateY(-4px) scale(1.08);
+
+        background:var(--accent-color);
+        color:#fff;
+
+        box-shadow:0 0 25px var(--hover-glow);
+    }
+}
