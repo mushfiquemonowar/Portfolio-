@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. PERFORMANCE-OPTIMIZED PARTICLE SYSTEM BACKGROUND
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
-    
+
     let resizeTimeout;
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    
+
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(resizeCanvas, 150);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         draw() {
-            ctx.fillStyle = `rgba(255, 213, 74, ${this.alpha})`;
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-                
+
                 // If current intersecting element contains skills, trigger fills
                 if (entry.target.id === 'skills') {
                     skillFills.forEach(fill => fill.style.width = fill.getAttribute('data-width'));
                 }
-                
+
                 // If current intersecting element contains statistics, execute incremental counter
                 if (entry.target.id === 'about') {
                     counters.forEach(counter => {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function executeTypingPattern() {
         const currentFullString = stringsArray[currentStringIndex];
-        
+
         if (isDeleting) {
             typingElement.textContent = currentFullString.substring(0, currentCharIndex - 1);
             currentCharIndex--;
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left - (rect.width / 2);
                 const y = e.clientY - rect.top - (rect.height / 2);
-                
+
                 // Precision factor adjustments
                 card.style.transform = `translateY(-8px) rotateX(${-y * 0.03}deg) rotateY(${x * 0.03}deg)`;
             });
