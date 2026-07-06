@@ -7,11 +7,11 @@
     --card-bg: #151515;
     --text-primary: #FFFFFF;
     --text-secondary: #BEBEBE;
-    --accent-color: #FFD54A;
+    --accent-color: #FF0F45;
     --border-color: rgba(255, 255, 255, 0.08);
-    --hover-glow: rgba(255, 213, 74, 0.25);
+    --hover-glow: rgba(255, 0, 100, 0.25);
     --glass-bg: rgba(21, 21, 21, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 0, 0, 0.08);
     --font-primary: 'Poppins', sans-serif;
     --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -109,7 +109,7 @@ h1, h2, h3, h4 {
 
 .glass-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 213, 74, 0.3);
+    border-color: rgba(255, 74, 120, 0.3);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px var(--hover-glow);
 }
 
@@ -243,7 +243,7 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
     text-decoration: none;
     color: var(--accent-color);
-    border: 1px solid rgba(255, 213, 74, 0.3);
+    border: 1px solid rgba(255, 74, 129, 0.3);
     border-radius: 4px;
     transition: all 0.3s var(--transition-smooth);
 }
@@ -714,7 +714,7 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
     html { font-size: 14px; }
     .section-header { margin-bottom: 2.5rem; }
-    
+
     /* Responsive Header & Hamburger Navigation Menu */
     .hamburger-menu { display: flex; }
     .nav-menu {
@@ -748,7 +748,7 @@ h1, h2, h3, h4 {
         border-radius: 4px;
         text-decoration: none;
     }
-    
+
     .contact-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
 }
