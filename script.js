@@ -1,203 +1,188 @@
-// ===============================
-// Smooth Scroll
-// ===============================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
     
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
+    // 1. PERFORMANCE-OPTIMIZED PARTICLE SYSTEM BACKGROUND
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let resizeTimeout;
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resizeCanvas, 150);
     });
-  });
-});
 
-
-// ===============================
-// Scroll Reveal Animation
-// ===============================
-
-const observer = new IntersectionObserver((entries) => {
-  
-  entries.forEach(entry => {
-    
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speedX = Math.random() * 0.2 - 0.1;
+            this.speedY = Math.random() * 0.3 + 0.1; // Smooth upward motion
+            this.alpha = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y -= this.speedY;
+            if (this.y < 0 || this.x < 0 || this.x > canvas.width) {
+                this.reset();
+                this.y = canvas.height;
+            }
+        }
+        draw() {
+            ctx.fillStyle = `rgba(255, 213, 74, ${this.alpha})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
-    
-  });
-  
-}, {
-  threshold: 0.2
-});
 
-document.querySelectorAll(
-  ".about-card,.skill-card,.contact-item,.image-box"
-).forEach(el => {
-  
-  el.classList.add("hidden");
-  
-  observer.observe(el);
-  
-});
+    const particleCount = Math.min(60, Math.floor(window.innerWidth / 20));
+    const particles = Array.from({ length: particleCount }, () => new Particle());
 
-
-// ===============================
-// Navbar Shadow
-// ===============================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-  
-  if (window.scrollY > 40) {
-    
-    header.style.boxShadow = "0 10px 30px rgba(0,0,0,.35)";
-    
-  } else {
-    
-    header.style.boxShadow = "none";
-    
-  }
-  
-});
-
-
-// ===============================
-// Active Navigation
-// ===============================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-  
-  let current = "";
-  
-  sections.forEach(section => {
-    
-    const top = section.offsetTop - 150;
-    
-    if (pageYOffset >= top) {
-      
-      current = section.getAttribute("id");
-      
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animateParticles);
     }
-    
-  });
-  
-  navLinks.forEach(link => {
-    
-    link.classList.remove("active");
-    
-    if (link.getAttribute("href") === "#" + current) {
-      
-      link.classList.add("active");
-      
+    animateParticles();
+
+    // 2. STICKY INTERACTIVE NAVIGATION HEADER
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // 3. RESPONSIVE HAMBURGER MENU ENGINE
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function toggleMenu() {
+        hamburgerBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     }
-    
-  });
-  
-});
 
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    navLinks.forEach(link => link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) toggleMenu();
+    }));
 
-// ===============================
-// Image Hover
-// ===============================
+    // 4. HIGH-PERFORMANCE INTERSECTION OBSERVER (Scroll Reveal & Skills & Counters)
+    const sections = document.querySelectorAll('.scroll-reveal');
+    const skillFills = document.querySelectorAll('.progress-fill');
+    const counters = document.querySelectorAll('.stat-number');
 
-const image = document.querySelector(".image-box");
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                
+                // If current intersecting element contains skills, trigger fills
+                if (entry.target.id === 'skills') {
+                    skillFills.forEach(fill => fill.style.width = fill.getAttribute('data-width'));
+                }
+                
+                // If current intersecting element contains statistics, execute incremental counter
+                if (entry.target.id === 'about') {
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'), 10);
+                        let count = 0;
+                        const increment = target / 50; // Smooth frame step
+                        const updateCount = () => {
+                            count += increment;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCount, 20);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-if (image) {
-  
-  image.addEventListener("mousemove", (e) => {
-    
-    const rect = image.getBoundingClientRect();
-    
-    const x = e.clientX - rect.left;
-    
-    const y = e.clientY - rect.top;
-    
-    image.style.transform =
-      `rotateY(${(x-rect.width/2)/25}deg)
- rotateX(${-(y-rect.height/2)/25}deg)`;
-    
-  });
-  
-  image.addEventListener("mouseleave", () => {
-    
-    image.style.transform = "rotateY(0deg) rotateX(0deg)";
-    
-  });
-  
-}
+    sections.forEach(sec => revealObserver.observe(sec));
 
+    // 5. ACTIVE MENU HIGHLIGHT LINK ON SCROLL
+    const appSections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+        let currentSectionId = 'home';
+        appSections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
+        });
+    });
 
-// ===============================
-// Typing Effect
-// ===============================
+    // 6. PREMIUM TYPING ANIMATION (Hero Section Tagline)
+    const stringsArray = ["Building My Digital Identity", "Engineering Precise Solutions", "Designing Structural Code"];
+    let currentStringIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typingElement');
 
-const title = document.querySelector(".small-title");
+    function executeTypingPattern() {
+        const currentFullString = stringsArray[currentStringIndex];
+        
+        if (isDeleting) {
+            typingElement.textContent = currentFullString.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+        } else {
+            typingElement.textContent = currentFullString.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+        }
 
-const text = "WELCOME";
+        let typingSpeed = isDeleting ? 40 : 80;
 
-let i = 0;
+        if (!isDeleting && currentCharIndex === currentFullString.length) {
+            typingSpeed = 2000; // Standstill delay at complete string
+            isDeleting = true;
+        } else if (isDeleting && currentCharIndex === 0) {
+            isDeleting = false;
+            currentStringIndex = (currentStringIndex + 1) % stringsArray.length;
+            typingSpeed = 400; // Adaptive pause before typing next line
+        }
 
-title.innerHTML = "";
-
-function typing() {
-  
-  if (i < text.length) {
-    
-    title.innerHTML += text.charAt(i);
-    
-    i++;
-    
-    setTimeout(typing, 120);
-    
-  }
-  
-}
-
-typing();
-
-
-// ===============================
-// Button Ripple
-// ===============================
-
-document.querySelectorAll(".btn").forEach(button => {
-  
-  button.addEventListener("click", function(e) {
-    
-    const circle = document.createElement("span");
-    
-    const diameter = Math.max(this.clientWidth, this.clientHeight);
-    
-    circle.style.width = diameter + "px";
-    
-    circle.style.height = diameter + "px";
-    
-    circle.style.left = e.offsetX - diameter / 2 + "px";
-    
-    circle.style.top = e.offsetY - diameter / 2 + "px";
-    
-    circle.classList.add("ripple");
-    
-    const ripple = this.querySelector(".ripple");
-    
-    if (ripple) {
-      
-      ripple.remove();
-      
+        setTimeout(executeTypingPattern, typingSpeed);
     }
-    
-    this.appendChild(circle);
-    
-  });
-  
+    if (typingElement) setTimeout(executeTypingPattern, 1000);
+
+    // 7. MOUSE PARALLAX EFFECT FOR PREMIUM CARDS
+    const structuralCards = document.querySelectorAll('.glass-card');
+    if (window.innerWidth > 1024) { // Execute only on Desktop targets for runtime health
+        structuralCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                
+                // Precision factor adjustments
+                card.style.transform = `translateY(-8px) rotateX(${-y * 0.03}deg) rotateY(${x * 0.03}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+            });
+        });
+    }
 });
-
-
-// ===============================
-// End
-// ===============================
