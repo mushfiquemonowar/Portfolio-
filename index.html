@@ -1,318 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mushfiue Monowar | Portfolio</title>
-
-    <link rel="stylesheet" href="style.css">
-
+    <title>Mushfiue Monowar | Digital Identity</title>
+    <meta name="description" content="Official digital identity of Mushfiue Monowar - Civil Engineering Student & Digital Designer. Building clean, modern engineering and digital solutions.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
+    <canvas id="particleCanvas"></canvas>
 
-    <div class="logo">
-        It's me<span>MUSHFIQUE</span>
-    </div>
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="#home" class="logo">MM<span>.</span></a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#features" class="nav-link">Focus</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://www.facebook.com/messages/e2ee/t/8322521327814892" class="nav-btn-mobile">Chat me</a>
+            </nav>
+            <a href="https://www.facebook.com/messages/e2ee/t/8322521327814892" class="nav-resume-btn">Chat me</a>
+            <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-    <nav>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Civil Engineering Student</span>
+                    <h1 class="hero-title">
+                        <span class="first-name">MUSHFIUE</span>
+                        <span class="last-name">MONOWAR</span>
+                    </h1>
+                    <p class="hero-tagline"><span id="typingElement"></span></p>
+                    <p class="hero-description">
+                        Bridging the structural precision of civil engineering with modern digital innovations. Focused on discipline, structural excellence, and clean experiences.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary">Contact Me</a>
+                        <a href="https://www.facebook.com/messages/e2ee/t/8322521327814892" class="btn btn-secondary">chat me</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="profile-container">
+                        <div class="glass-ring"></div>
+                        <img src="https://i.imgur.com/SydkEYi.jpeg" alt="Mushfiue Monowar Profile Image" class="profile-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <a href="#about" aria-label="Scroll to About Section">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <section id="about" class="about-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Identity</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h3>Engineering. Technology. Innovation.</h3>
+                            <p>I am a Civil Engineering student deeply passionate about analyzing spatial frameworks, applying structural physics, and adopting structural engineering tech. I constantly merge real-world physics with cutting-edge software paradigms.</p>
+                            <p>I thrive on developing clean digital ecosystems, mastering advanced design software, and creating intuitive visual designs. My foundational life and workflow philosophy scales around consistency, self-improvement, and structural organization.</p>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat-box">
+                                <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                                <span class="stat-label"><i class="fa-solid var(--accent-color) fa-bullseye icon-inline"></i> Commitment</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+                                <span class="stat-label"><i class="fa-solid fa-arrows-spin icon-inline"></i> Innovation Cycle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <a href="#contact" class="btn">
-            Hire Me
-        </a>
+        <section id="skills" class="skills-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Proficiencies</span>
+                    <h2 class="section-title">Core Competencies</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skills-card glass-card">
+                        <h3 class="skills-card-title"><i class="fa-solid fa-compass-drafting"></i> Technical & Engineering</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>AutoCAD & Blueprints</span><span class="skill-percentage">90%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Engineering Drawing</span><span class="skill-percentage">85%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>HTML5 / CSS3 Layouts</span><span class="skill-percentage">80%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>JavaScript (ES6+)</span><span class="skill-percentage">70%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Microsoft Office Suite</span><span class="skill-percentage">95%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
+                        </div>
+                    </div>
 
-    </nav>
+                    <div class="skills-card glass-card">
+                        <h3 class="skills-card-title"><i class="fa-solid fa-brain"></i> Professional Attributes</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Problem Solving</span><span class="skill-percentage">90%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Analytical Communication</span><span class="skill-percentage">85%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Teamwork & Collaboration</span><span class="skill-percentage">90%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Quick Tech Learning</span><span class="skill-percentage">95%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Discipline & Execution</span><span class="skill-percentage">90%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</header>
+        <section id="features" class="features-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Core Tenets</span>
+                    <h2 class="section-title">Professional Values</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                        <h3>Engineering</h3>
+                        <p>Focusing on foundational structures, calculated execution, and real-world infrastructure mechanics.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3>Technology</h3>
+                        <p>Leveraging systematic architectures and modern development engines to optimize computational productivity.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3>Innovation</h3>
+                        <p>Refusing default paths to solve legacy physical and spatial dilemmas with algorithmic methodologies.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>Continuous Learning</h3>
+                        <p>Adapting daily to emerging technical frameworks, advanced industry standards, and academic engineering paradigms.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                        <h3>Creativity</h3>
+                        <p>Crafting sleek UI layouts and clean, interactive digital experiences that communicate premium brand authority.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Discipline</h3>
+                        <p>Committed to strict personal routines, geometric accuracy, structural timelines, and calculated quality metrics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-<div class="image-box">
-
-<img src="https://i.imgur.com/oNHdJ81.png" alt="Mushfiue Monowar">
-
+        <section id="contact" class="contact-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Gateway</span>
+                    <h2 class="section-title">Secure Connection</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon-wrapper"><i class="fa-solid fa-phone"></i></div>
+                        <h4>Call Me</h4>
+                        <p class="contact-detail">+8801837761048</p>
+                        <a href="tel:+8801837761048" class="contact-link-btn">Call Now <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon-wrapper"><i class="fa-brands fa-whatsapp"></i></div>
+                        <h4>WhatsApp</h4>
+                        <p class="contact-detail">Direct Chat Layer</p>
+                        <a href="https://wa.me/8801837761048" target="_blank" rel="noopener noreferrer" class="contact-link-btn">Chat Now <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon-wrapper"><i class="fa-solid fa-envelope"></i></div>
+                        <h4>Email</h4>
+                        <p class="contact-detail">mushfiue@protonmail.com</p>
+                        <a href="mailto:mushfiue@protonmail.com" class="contact-link-btn">Send Email <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon-wrapper"><i class="fa-brands fa-facebook-f"></i></div>
+                        <h4>Facebook</h4>
+                        <p class="contact-detail">Social Infrastructure</p>
+                        <a href="https://www.facebook.com/namir.149" target="_blank" rel="noopener noreferrer" class="contact-link-btn">Visit Profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+<div class="contact-card glass-card">
+    <div class="contact-icon-wrapper"><i class="fa-brands fa-linkedin-in"></i></div>
+    <h4>LinkedIn</h4>
+    <p class="contact-detail">Professional Network Ecosystem</p>
+    <a href="https://www.linkedin.com/in/mushfique-monowar-b1a551330/" target="_blank" rel="noopener noreferrer" class="contact-link-btn">Open LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 </div>
-
-</div>
-
-<div class="hero-right">
-
-<p class="hero-tag">
-● BUILDING MY DIGITAL IDENTITY
-</p>
-
-<h1 class="big-name">
-
-MUSHFIUE
-
-<span>MONOWAR</span>
-
-</h1>
-
-<h2 class="profession">
-
-Civil Engineering Student
-
-</h2>
-
-<p class="description">
-
-Passionate about engineering,
-technology and modern design.
-
-I enjoy creating clean digital experiences,
-solving problems and continuously
-learning new skills.
-
-</p>
-
-<div class="hero-buttons">
-
-<a href="#about" class="btn">
-About Me
-</a>
-
-<a href="#contact" class="btn-outline">
-Contact
-</a>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-
-<h2>10+</h2>
-
-<p>Skills</p>
-
-</div>
-
-<div class="stat">
-
-<h2>02+</h2>
-
-<p>Years Learning</p>
-
-</div>
-
-<div class="stat">
-
-<h2>100%</h2>
-
-<p>Dedicated</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section id="about" class="about">
-
-<p class="section-title">
-ABOUT ME
-</p>
-
-<div class="about-card">
-
-<h2>
-
-Engineering | Creativity | Technology 
-
-</h2>
-
-<p>
-
-Hello!
-
-I'm <strong>Mushfiue Monowar</strong>,
-a Civil Engineering student who enjoys
-combining engineering knowledge with
-modern digital technologies.
-
-I believe that consistency,
-discipline and curiosity are the keys
-to personal growth.
-
-Outside academics I enjoy learning
-web development, UI design and
-building creative projects.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-
-<section id="skills" class="skills">
-
-<p class="section-title">
-MY SKILLS
-</p>
-
-<div class="skill-grid">
-
-<div class="skill-card">
-
-<h3>HTML</h3>
-
-<div class="progress">
-<div class="fill html"></div>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>CSS</h3>
-
-<div class="progress">
-<div class="fill css"></div>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>JavaScript</h3>
-
-<div class="progress">
-<div class="fill js"></div>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>AutoCAD</h3>
-
-<div class="progress">
-<div class="fill cad"></div>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>Microsoft Office</h3>
-
-<div class="progress">
-<div class="fill office"></div>
-</div>
-
-</div>
-
-<div class="skill-card">
-
-<h3>Problem Solving</h3>
-
-<div class="progress">
-<div class="fill problem"></div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact" class="contact">
-
-<p class="section-title">
-
-GET IN TOUCH
-
-</p>
-
-<div class="contact-box">
-
-<div class="contact-item">
-
-<h3>Email</h3>
-<a href="mailto:mushfique@protonmail.com" class="btn">
-   Click to Email
-</a>
-
-</div>
-
-<div class="contact-item">
-
-<h3>WhatsApp</h3>
-
-<a href="https://wa.me/8801837761048" target="_blank" class="btn">
-   Click to WhatsApp
-</a>
-
-</div>
-
-<div class="contact-item">
-
-<h3>Facebook</h3>
-
-<a href="https://www.facebook.com/namir.149/" target="_blank" class="btn">
-   Click to Visit Facebook
-</a>
-</div>
-
-<div class="contact-item">
-
-<h3>Phone Call</h3>
-
-<a href="tel:+8801837761048" class="btn">
-   Click to Call Now
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-
-© 2026
-
-<strong>Mushfiue Monowar</a></strong>
-
-</p>
-
-<p>
-
-Designed & Developed with HTML • CSS • JavaScript
-
-</p>
-
-</footer>
-
-<script src="script.js"></script>
-
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p class="copyright">&copy; 2026 Mushfiue Monowar. All Rights Reserved.</p>
+            <p class="developer-credit">Designed & Developed by Mushfiue Monowar</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
