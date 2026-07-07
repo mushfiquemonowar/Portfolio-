@@ -297,7 +297,17 @@ const loadingLines = [
     "NO AI WAS HARMED WHILE BUILDING THIS PAGE.",
     "404: BORING EXPERIENCE NOT FOUND.",
     "LOADING... ALMOST FASTER THAN YOUR INTERNET.",
-    "CALCULATING... EVERY PIXEL MATTERS."
+    "CALCULATING... EVERY PIXEL MATTERS.",
+    "Loading… because even perfection needs a little preparation.",
+"Please wait… our pixels are having a serious meeting.",
+"Loading… teaching our servers how to look busy.",
+"Almost ready… just convincing the last 1% to cooperate.",
+"Loading… coffee break for our code. ☕",
+"Patience detected. Awarding you +10 developer respect.",
+"Loading… because instant greatness is still buffering.",
+"Our hamster is running the server… please wait.",
+"Calculating how impressive this page should be…",
+"Loading… making sure your experience is worth the wait."
 ];
 
 const randomLine = loadingLines[Math.floor(Math.random() * loadingLines.length)];
