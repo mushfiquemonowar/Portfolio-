@@ -185,4 +185,145 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-});
+/*==================================
+ PREMIUM GEOMETRY PRELOADER
+==================================*/
+
+(() => {
+
+const preloader = document.getElementById("preloader");
+const canvas = document.getElementById("loaderCanvas");
+
+if (!preloader || !canvas) return;
+
+const ctx = canvas.getContext("2d");
+
+let w,h;
+let particles=[];
+
+function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize",resize);
+resize();
+
+const accent = "rgba(255,255,255,0.9)";
+
+const COUNT = window.innerWidth < 768 ? 45 : 80;
+
+for(let i=0;i<COUNT;i++){
+
+    particles.push({
+
+        x:Math.random()*w,
+        y:Math.random()*h,
+
+        vx:(Math.random()-.5)*0.35,
+        vy:(Math.random()-.5)*0.35,
+
+        r:Math.random()*2+1
+
+    });
+
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,w,h);
+
+    for(const p of particles){
+
+        p.x+=p.vx;
+        p.y+=p.vy;
+
+        if(p.x<0||p.x>w) p.vx*=-1;
+        if(p.y<0||p.y>h) p.vy*=-1;
+
+        ctx.beginPath();
+        ctx.fillStyle=accent;
+        ctx.shadowColor=accent;
+        ctx.shadowBlur=8;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+
+    }
+
+    ctx.shadowBlur=0;
+
+    for(let i=0;i<particles.length;i++){
+
+        for(let j=i+1;j<particles.length;j++){
+
+            const dx=particles[i].x-particles[j].x;
+            const dy=particles[i].y-particles[j].y;
+
+            const d=Math.sqrt(dx*dx+dy*dy);
+
+            if(d<140){
+
+                ctx.beginPath();
+
+              ctx.strokeStyle=`rgba(255,255,255,${0.08-(d/1800)})`;
+
+                ctx.moveTo(particles[i].x,particles[i].y);
+                ctx.lineTo(particles[j].x,particles[j].y);
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
+/*==============================
+ PRELOADER TYPING
+==============================*/
+
+const loaderText = document.getElementById("loaderText");
+
+const loadingLines = [
+    "WARNING: YOU MAY STAY LONGER THAN EXPECTED.",
+    "COFFEE DETECTED. PRODUCTIVITY BOOSTED.",
+    "ENGINEERING... NOT MAGIC. (ALTHOUGH IT LOOKS LIKE IT.)",
+    "CALM DOWN. GOOD THINGS TAKE MILLISECONDS.",
+    "NO AI WAS HARMED WHILE BUILDING THIS PAGE.",
+    "404: BORING EXPERIENCE NOT FOUND.",
+    "LOADING... ALMOST FASTER THAN YOUR INTERNET.",
+    "CALCULATING... EVERY PIXEL MATTERS."
+];
+
+const randomLine = loadingLines[Math.floor(Math.random() * loadingLines.length)];
+
+let i = 0;
+
+function typeLoader() {
+    
+    if (!loaderText) return;
+    
+    if (i <= randomLine.length) {
+        
+        loaderText.textContent = randomLine.substring(0, i++);
+        setTimeout(typeLoader, 70);
+        
+    } else {
+        
+        setTimeout(() => {
+            document.getElementById("preloader").classList.add("hide");
+        }, 3000);
+        
+    }
+    
+}
+
+typeLoader();
+
+
+})();});
